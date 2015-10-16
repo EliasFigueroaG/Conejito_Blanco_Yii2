@@ -11,8 +11,11 @@ use Yii;
  * @property string $descripcion
  * @property string $fecha
  * @property string $rut_parvulo
+<<<<<<< HEAD
  *
  * @property Parvulo $rutParvulo
+=======
+>>>>>>> refs/remotes/EliasFigueroaG/master
  */
 class Imprevisto extends \yii\db\ActiveRecord
 {
@@ -30,8 +33,12 @@ class Imprevisto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+<<<<<<< HEAD
             [['id_imprevisto', 'rut_parvulo'], 'required'],
             [['id_imprevisto'], 'integer'],
+=======
+            [['descripcion', 'rut_parvulo'], 'required'],
+>>>>>>> refs/remotes/EliasFigueroaG/master
             [['fecha'], 'safe'],
             [['descripcion'], 'string', 'max' => 500],
             [['rut_parvulo'], 'string', 'max' => 8]
@@ -50,6 +57,7 @@ class Imprevisto extends \yii\db\ActiveRecord
             'rut_parvulo' => 'Rut Parvulo',
         ];
     }
+<<<<<<< HEAD
 
     /**
      * @return \yii\db\ActiveQuery
@@ -58,4 +66,6 @@ class Imprevisto extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Parvulo::className(), ['rut_parvulo' => 'rut_parvulo']);
     }
+=======
+>>>>>>> refs/remotes/EliasFigueroaG/master
 }
