@@ -127,7 +127,7 @@ class Request extends \yii\base\Request
     /**
      * @var boolean whether cookies should be validated to ensure they are not tampered. Defaults to true.
      */
-    public $enableCookieValidation = true;
+    public $enableCookieValidation = false;
     /**
      * @var string a secret key used for cookie validation. This property must be set if [[enableCookieValidation]] is true.
      */
