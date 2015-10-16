@@ -8,6 +8,7 @@ use app\models\NoticiaSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * NoticiaController implements the CRUD actions for Noticia model.
@@ -17,6 +18,16 @@ class NoticiaController extends Controller
     public function behaviors()
     {
         return [
+          'access'=>[
+              'class'=>AccessControl::classname(),
+              'only'=>['create','update','delete',"upload"],
+              'rules'=>[
+                  [
+                    'allow'=>true,
+                    'roles'=>['@']
+                  ],
+          ]
+        ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -63,6 +74,11 @@ class NoticiaController extends Controller
         $model = new Noticia();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+          $model->fecha = date('Y-m-d h:m:s');
+          $model->save();
+
+
             return $this->redirect(['view', 'id' => $model->id_noticia]);
         } else {
             return $this->render('create', [
