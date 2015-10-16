@@ -8,7 +8,11 @@ use app\models\ImprevistoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+<<<<<<< HEAD
+
+=======
 use yii\filters\AccessControl;
+>>>>>>> refs/remotes/EliasFigueroaG/master
 /**
  * ImprevistoController implements the CRUD actions for Imprevisto model.
  */
@@ -17,6 +21,8 @@ class ImprevistoController extends Controller
     public function behaviors()
     {
         return [
+<<<<<<< HEAD
+=======
           'access'=>[
               'class'=>AccessControl::classname(),
               'only'=>['create','update','delete'],
@@ -27,6 +33,7 @@ class ImprevistoController extends Controller
                   ],
           ]
         ],
+>>>>>>> refs/remotes/EliasFigueroaG/master
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -53,6 +60,16 @@ class ImprevistoController extends Controller
 
     /**
      * Displays a single Imprevisto model.
+<<<<<<< HEAD
+     * @param integer $id_imprevisto
+     * @param string $rut_parvulo
+     * @return mixed
+     */
+    public function actionView($id_imprevisto, $rut_parvulo)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id_imprevisto, $rut_parvulo),
+=======
      * @param integer $id
      * @return mixed
      */
@@ -60,6 +77,7 @@ class ImprevistoController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+>>>>>>> refs/remotes/EliasFigueroaG/master
         ]);
     }
 
@@ -73,10 +91,14 @@ class ImprevistoController extends Controller
         $model = new Imprevisto();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+<<<<<<< HEAD
+            return $this->redirect(['view', 'id_imprevisto' => $model->id_imprevisto, 'rut_parvulo' => $model->rut_parvulo]);
+=======
 
           $model->fecha = date('Y-m-d h:m:s');
           $model->save();
             return $this->redirect(['view', 'id' => $model->id_imprevisto]);
+>>>>>>> refs/remotes/EliasFigueroaG/master
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -87,6 +109,18 @@ class ImprevistoController extends Controller
     /**
      * Updates an existing Imprevisto model.
      * If update is successful, the browser will be redirected to the 'view' page.
+<<<<<<< HEAD
+     * @param integer $id_imprevisto
+     * @param string $rut_parvulo
+     * @return mixed
+     */
+    public function actionUpdate($id_imprevisto, $rut_parvulo)
+    {
+        $model = $this->findModel($id_imprevisto, $rut_parvulo);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id_imprevisto' => $model->id_imprevisto, 'rut_parvulo' => $model->rut_parvulo]);
+=======
      * @param integer $id
      * @return mixed
      */
@@ -96,6 +130,7 @@ class ImprevistoController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_imprevisto]);
+>>>>>>> refs/remotes/EliasFigueroaG/master
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -106,12 +141,22 @@ class ImprevistoController extends Controller
     /**
      * Deletes an existing Imprevisto model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+<<<<<<< HEAD
+     * @param integer $id_imprevisto
+     * @param string $rut_parvulo
+     * @return mixed
+     */
+    public function actionDelete($id_imprevisto, $rut_parvulo)
+    {
+        $this->findModel($id_imprevisto, $rut_parvulo)->delete();
+=======
      * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+>>>>>>> refs/remotes/EliasFigueroaG/master
 
         return $this->redirect(['index']);
     }
@@ -119,6 +164,16 @@ class ImprevistoController extends Controller
     /**
      * Finds the Imprevisto model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+<<<<<<< HEAD
+     * @param integer $id_imprevisto
+     * @param string $rut_parvulo
+     * @return Imprevisto the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id_imprevisto, $rut_parvulo)
+    {
+        if (($model = Imprevisto::findOne(['id_imprevisto' => $id_imprevisto, 'rut_parvulo' => $rut_parvulo])) !== null) {
+=======
      * @param integer $id
      * @return Imprevisto the loaded model
      * @throws NotFoundHttpException if the model cannot be found
@@ -126,6 +181,7 @@ class ImprevistoController extends Controller
     protected function findModel($id)
     {
         if (($model = Imprevisto::findOne($id)) !== null) {
+>>>>>>> refs/remotes/EliasFigueroaG/master
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
