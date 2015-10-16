@@ -37,6 +37,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Hitos', 'url' => ['/hito/index']],
             ['label' => 'Imprevistos', 'url' => ['/imprevisto/index']],
             ['label' => 'Noticias', 'url' => ['/noticia/index']],
             ['label' => 'Documentos', 'url' => ['/documento/index']],
