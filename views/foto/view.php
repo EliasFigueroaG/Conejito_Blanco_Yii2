@@ -5,8 +5,10 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Foto */
-
-$this->title = $model->id_foto;
+$prueba=$this->title = $model->link;
+$prueba2 ="<a href='../web/".$prueba."'>DESCARGAR</a>";
+echo $prueba2;
+$this->title = $model->titutlo;
 $this->params['breadcrumbs'][] = ['label' => 'Fotos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
