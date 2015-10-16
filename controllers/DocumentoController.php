@@ -24,7 +24,7 @@ class DocumentoController extends Controller
       return [
         'access'=>[
             'class'=>AccessControl::classname(),
-            'only'=>['create','update','delete',"upload"],
+            'only'=>['create','update','delete'],
             'rules'=>[
                 [
                   'allow'=>true,
