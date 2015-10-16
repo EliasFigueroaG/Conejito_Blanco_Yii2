@@ -16,6 +16,7 @@ class Foto extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+     public $file;
     public static function tableName()
     {
         return 'foto';
@@ -27,7 +28,8 @@ class Foto extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['titutlo', 'link'], 'required'],
+            [['titutlo'], 'required'],
+            [['file'],'file'],
             [['titutlo'], 'string', 'max' => 100],
             [['link'], 'string', 'max' => 200]
         ];
@@ -42,6 +44,7 @@ class Foto extends \yii\db\ActiveRecord
             'id_foto' => 'Id Foto',
             'titutlo' => 'Titutlo',
             'link' => 'Link',
+            'file'=>'Link',
         ];
     }
 }

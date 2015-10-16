@@ -3,12 +3,15 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Foto;
-use app\models\FotoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
+use yii\web\UploadedForm;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
+use app\models\FotoSearch;
+use app\models\Foto;
 
 /**
  * FotoController implements the CRUD actions for Foto model.
@@ -20,7 +23,7 @@ class FotoController extends Controller
         return [
           'access'=>[
               'class'=>AccessControl::classname(),
-              'only'=>['create','update','delete',"upload"],
+              'only'=>['create','update','delete'],
               'rules'=>[
                   [
                     'allow'=>true,
@@ -74,6 +77,14 @@ class FotoController extends Controller
         $model = new Foto();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+          $imageName= $model->titutlo;
+          $model->file = UploadedFile::getInstance($model,'file');
+          $model->file->saveAS('uploads/'.$imageName.'.'.$model->file->extension);
+
+          $model->link = 'uploads/' . $model->titutlo.'.' . $model->file->extension;
+          $model->save();
+
             return $this->redirect(['view', 'id' => $model->id_foto]);
         } else {
             return $this->render('create', [
